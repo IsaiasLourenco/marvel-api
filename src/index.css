@@ -1,0 +1,88 @@
+body {
+  background-color: black;
+  color: white; /* Garantir que o texto tenha cor branca */
+  font-family: Arial, sans-serif; /* Ajuste na fonte, se necessário */
+  margin: 0;
+  padding: 0;
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr); /* 5 cards por linha */
+  gap: 16px;
+  padding: 20px;
+}
+
+.card {
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 16px;
+  text-align: center;
+  background-color: #000;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.card img {
+  width: 120px; /* Limita a largura da imagem */
+  height: 120px; /* Limita a altura da imagem */
+  object-fit: cover; /* A imagem não distorce, mas corta caso necessário para preencher */
+  border-radius: 8px;
+  margin-bottom: 12px; /* Espaço entre a imagem e o texto */
+}
+
+.card h3 {
+  font-size: 16px; /* Ajuste no tamanho da fonte para melhor exibição */
+  margin: 8px 0;
+}
+
+.card p {
+  font-size: 14px;
+  color: #666;
+}
+
+.carregar-mais {
+  display: block;
+  margin: 20px auto;
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.carregar-mais:disabled {
+  background-color: #cccccc;
+}
+
+/* Centralizar o conteúdo do cabeçalho (logo) */
+.cabecalho {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+/* Centralizar o logo */
+.logo {
+  max-width: 150px; /* Ajuste do tamanho máximo do logo */
+  height: auto;
+}
+
+/* Centralizar o título */
+.selecao-de-personagens {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.titulo {
+  font-size: 24px;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 20px;
+}
