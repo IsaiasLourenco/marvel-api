@@ -24,13 +24,13 @@ const SplashScreen = ({ onFinish }) => {
       <Content>
         <CharacterContainer>
           <Character
-            src="../../public/card-iron-man.jpg"
+            src="/card-iron-man.jpg"
             alt="Personagem Rosto"
             visible={!showFullBody}
             small
           />
           <Character
-            src="../../public/card-iron-man.png"
+            src="/card-iron-man.png"
             alt="Personagem Corpo Inteiro"
             visible={showFullBody}
           />
