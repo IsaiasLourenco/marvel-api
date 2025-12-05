@@ -2,11 +2,6 @@ import { useParams, useNavigate } from "react-router-dom";
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import styled from "styled-components";
-import md5 from "blueimp-md5";
-
-const API_BASE_URL = "https://gateway.marvel.com/v1/public/characters";
-const PUBLIC_KEY = "e907b9af041b536a1c92305fe823e5b5";
-const PRIVATE_KEY = "4a1702cf25820353824485807689b59fb8512d8a";
 
 const CharacterDetails = () => {
   const { id } = useParams();
@@ -16,17 +11,8 @@ const CharacterDetails = () => {
   useEffect(() => {
     const fetchCharacterDetails = async () => {
       try {
-        const ts = Date.now();
-        const hash = md5(`${ts}${PRIVATE_KEY}${PUBLIC_KEY}`).toString();
-
-        const response = await axios.get(`${API_BASE_URL}/${id}`, {
-          params: {
-            apikey: PUBLIC_KEY,
-            ts,
-            hash,
-          },
-        });
-
+        // Agora chamamos a rota backend, não a Marvel diretamente
+        const response = await axios.get(`/api/characters/${id}`);
         setCharacter(response.data.data.results[0]); // Pegando o primeiro item do array
       } catch (error) {
         console.error("Erro ao carregar detalhes do personagem:", error);
@@ -41,7 +27,11 @@ const CharacterDetails = () => {
   return (
     <Container>
       <LogoContainer>
-        <LogoImage src="/download.jpeg" alt="Logo Marvel" style={{ width: "500px", marginBottom: "0px", padding: "0px" }} />
+        <LogoImage
+          src="/download.jpeg"
+          alt="Logo Marvel"
+          style={{ width: "500px", marginBottom: "0px", padding: "0px" }}
+        />
       </LogoContainer>
       <img
         src={`${character.thumbnail.path}.${character.thumbnail.extension}`}
@@ -59,22 +49,23 @@ const CharacterDetails = () => {
 
 export default CharacterDetails;
 
+// Estilos
 const LogoContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-bottom: -50px; /* Ajuste a margem conforme necessário */
+  margin-bottom: -50px;
 `;
 
 const LogoImage = styled.img`
-  height: auto; /* Mantém a proporção da imagem */
+  height: auto;
   margin-top: -300px;
 `;
 
 const Par = styled.div`
   width: 500px;
 
-    @media (max-width: 1200px) {
+  @media (max-width: 1200px) {
     width: 500px;
   }
 
@@ -90,21 +81,22 @@ const Par = styled.div`
 const Container = styled.div`
   display: flex;
   flex-direction: column;
-  align-items: center; /* Centraliza tudo horizontalmente */
+  align-items: center;
   justify-content: center;
   text-align: center;
   padding: 20px;
   margin-top: 200px;
 
   img {
-    width: 200px; /* Tamanho fixo para uniformidade */
+    width: 200px;
     height: 200px;
-    object-fit: contain; /* Mantém a imagem dentro do espaço sem cortar */
+    object-fit: contain;
     border-radius: 10px;
-    display: block; /* Evita espaços estranhos */
+    display: block;
   }
 
-  h1, p {
+  h1,
+  p {
     text-align: center;
     max-width: 80%;
   }
@@ -123,32 +115,29 @@ const Container = styled.div`
     width: 300px;
     margin-left: 30px;
   }
-
-`
-  ;
+`;
 
 const Botao = styled.div`
-   background-color: #333; /* Cinza escuro */
-  color: #fff; /* Texto branco */
-  border: 2px solid #fff; /* Borda branca para contraste */
-  padding: 10px 20px; /* Tamanho confortável */
-  font-size: 16px; /* Tamanho da fonte */
-  border-radius: 8px; /* Cantos arredondados */
+  background-color: #333;
+  color: #fff;
+  border: 2px solid #fff;
+  padding: 10px 20px;
+  font-size: 16px;
+  border-radius: 8px;
   cursor: pointer;
   transition: all 0.3s ease-in-out;
   margin-top: 10px;
   margin-bottom: 10px;
 
   &:hover {
-    background-color: #555; /* Cinza mais claro no hover */
-    color: #000; /* Texto preto no hover */
-    border-color: #ccc; /* Borda cinza no hover */
-    transform: scale(1.05); /* Leve aumento no tamanho */
+    background-color: #555;
+    color: #000;
+    border-color: #ccc;
+    transform: scale(1.05);
   }
 
   &:active {
-    background-color: #222; /* Tom mais escuro no clique */
-    transform: scale(0.95); /* Botão "afundando" */
+    background-color: #222;
+    transform: scale(0.95);
   }
-`
-  ;
+`;

@@ -2,11 +2,6 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import CharacCard from "../CharacCard";
 import styled from "styled-components";
-import md5 from "blueimp-md5";
-
-const API_BASE_URL = "https://gateway.marvel.com/v1/public/characters";
-const PUBLIC_KEY = "e907b9af041b536a1c92305fe823e5b5";
-const PRIVATE_KEY = "4a1702cf25820353824485807689b59fb8512d8a";
 
 const Home = () => {
   const [characters, setCharacters] = useState([]);
@@ -19,22 +14,15 @@ const Home = () => {
 
   const fetchCharacters = async (newOffset, reset = false) => {
     try {
-      const ts = Date.now();
-      const hash = md5(`${ts}${PRIVATE_KEY}${PUBLIC_KEY}`).toString();
-
-      const response = await axios.get(API_BASE_URL, {
-        params: {
-          limit: 10,
-          offset: newOffset,
-          apikey: PUBLIC_KEY,
-          ts,
-          hash,
-        },
+      const response = await axios.get("/api/characters", {
+        params: { offset: newOffset },
       });
 
       const newCharacters = response.data.data.results;
 
-      setCharacters((prev) => (reset ? newCharacters : [...prev, ...newCharacters]));
+      setCharacters((prev) =>
+        reset ? newCharacters : [...prev, ...newCharacters]
+      );
 
       setOffset(newOffset + 10); // Atualiza o offset
     } catch (error) {
@@ -44,17 +32,8 @@ const Home = () => {
 
   const searchCharactersByName = async (name) => {
     try {
-      const ts = Date.now();
-      const hash = md5(`${ts}${PRIVATE_KEY}${PUBLIC_KEY}`).toString();
-
-      const response = await axios.get(API_BASE_URL, {
-        params: {
-          nameStartsWith: name, // Busca personagens pelo nome
-          limit: 10,
-          apikey: PUBLIC_KEY,
-          ts,
-          hash,
-        },
+      const response = await axios.get("/api/characters", {
+        params: { nameStartsWith: name, limit: 10 },
       });
 
       const results = response.data.data.results;
@@ -119,16 +98,17 @@ const Home = () => {
 
 export default Home;
 
+// Estilos
 const LogoContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-bottom: -150px; /* Ajuste a margem conforme necessário */
+  margin-bottom: -150px;
 `;
 
 const LogoImage = styled.img`
-  width: 200px; /* Ajuste o tamanho */
-  height: auto; /* Mantém a proporção da imagem */
+  width: 200px;
+  height: auto;
   margin-top: -150px;
 `;
 
@@ -140,27 +120,27 @@ const Container = styled.div`
 `;
 
 const Botao = styled.div`
-  background-color: #333; /* Cinza escuro */
-  color: #fff; /* Texto branco */
-  border: 2px solid #fff; /* Borda branca para contraste */
-  padding: 10px 20px; /* Tamanho confortável */
-  font-size: 16px; /* Tamanho da fonte */
-  border-radius: 8px; /* Cantos arredondados */
+  background-color: #333;
+  color: #fff;
+  border: 2px solid #fff;
+  padding: 10px 20px;
+  font-size: 16px;
+  border-radius: 8px;
   cursor: pointer;
   transition: all 0.3s ease-in-out;
   margin-top: 10px;
   margin-bottom: 10px;
 
   &:hover {
-    background-color: #555; /* Cinza mais claro no hover */
-    color: #000; /* Texto preto no hover */
-    border-color: #ccc; /* Borda cinza no hover */
-    transform: scale(1.05); /* Leve aumento no tamanho */
+    background-color: #555;
+    color: #000;
+    border-color: #ccc;
+    transform: scale(1.05);
   }
 
   &:active {
-    background-color: #222; /* Tom mais escuro no clique */
-    transform: scale(0.95); /* Botão "afundando" */
+    background-color: #222;
+    transform: scale(0.95);
   }
 `;
 
@@ -170,7 +150,6 @@ const CharacterGrid = styled.div`
   gap: 10px;
   margin: auto;
   width: 80%;
-  
   justify-items: center;
 
   @media (max-width: 1200px) {
