@@ -14,14 +14,16 @@ const Home = () => {
 
   const fetchCharacters = async (newOffset, reset = false) => {
     try {
-      const response = await axios.get("http://localhost:3001/characters", {
+      const response = await axios.get("/characters.json", {
         headers: { "Cache-Control": "no-cache" }
       });
 
-
-      const newCharacters = Array.isArray(response.data)
-        ? response.data
-        : Object.values(response.data);
+      const data = response.data;
+      const newCharacters = Array.isArray(data)
+        ? data
+        : Array.isArray(data.characters)
+        ? data.characters 
+        : Object.values(data);
 
       setCharacters((prev) =>
         reset ? newCharacters : [...prev, ...newCharacters]
@@ -35,15 +37,23 @@ const Home = () => {
 
   const searchCharactersByName = async (name) => {
     try {
-      const response = await axios.get("http://localhost:3001/characters", {
+      const response = await axios.get("/characters.json", {
         headers: { "Cache-Control": "no-cache" }
       });
 
-      console.log("Busca por nome, resposta:", response.data); // <-- debug
+      const data = response.data;
+      const all = Array.isArray(data)
+        ? data
+        : Array.isArray(data.characters)
+        ? data.characters
+        : Object.values(data);
 
-      const all = Array.isArray(response.data)
-        ? response.data
-        : Object.values(response.data);
+        const filtered = all.filter (c =>
+          String(c.Character || "").toLowerCase().includes(name.toLowerCase())
+        );
+
+        setCharacters(filtered);
+        setOffset(0);
 
       const query = name.trim().toLowerCase();
       const results = all.filter((c) =>

@@ -8,21 +8,30 @@ const CharacterDetails = () => {
   const [character, setCharacter] = useState(null);
   const navigate = useNavigate();
 
-  useEffect(() => {
-    const fetchCharacterDetails = async () => {
-      try {
-        const response = await axios.get(
-          `http://localhost:3001/characters/${id}`
-        );
+useEffect(() => {
+  const fetchCharacterDetails = async () => {
+    try {
+      const response = await axios.get("/characters.json", {
+        headers: { "Cache-Control": "no-cache" }
+      });
 
-        setCharacter(response.data); // ← agora sim, popula o estado
-      } catch (error) {
-        console.error("Erro ao carregar detalhes do personagem:", error);
-      }
-    };
+      const data = response.data;
+      const all = Array.isArray(data)
+        ? data
+        : Array.isArray(data.characters)
+        ? data.characters
+        : Object.values(data);
 
-    fetchCharacterDetails();
-  }, [id]);
+      const found = all.find(c => c.id === Number(id));
+
+      setCharacter(found); // popula o estado com o personagem encontrado
+    } catch (error) {
+      console.error("Erro ao carregar detalhes do personagem:", error);
+    }
+  };
+
+  fetchCharacterDetails();
+}, [id]);
 
   if (!character) return <h2>Carregando...</h2>;
 
@@ -53,7 +62,6 @@ const CharacterDetails = () => {
 };
 
 export default CharacterDetails;
-
 
 // Estilos
 const LogoContainer = styled.div`
