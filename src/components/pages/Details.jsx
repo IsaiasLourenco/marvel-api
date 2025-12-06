@@ -11,9 +11,12 @@ const CharacterDetails = () => {
   useEffect(() => {
     const fetchCharacterDetails = async () => {
       try {
-        // Agora chamamos a rota backend, não a Marvel diretamente
-        const response = await axios.get(`/api/characters/${id}`);
-        setCharacter(response.data.data.results[0]); // Pegando o primeiro item do array
+        // Busca todos os personagens porque o JSON tem raiz "characters"
+        const response = await axios.get("http://localhost:3001/characters");
+        const found = response.data.find(
+          (c) => c.id === Number(id)
+        );
+        setCharacter(found);
       } catch (error) {
         console.error("Erro ao carregar detalhes do personagem:", error);
       }
@@ -30,19 +33,22 @@ const CharacterDetails = () => {
         <LogoImage
           src="/download.jpeg"
           alt="Logo Marvel"
-          style={{ width: "500px", marginBottom: "0px", padding: "0px" }}
+          style={{ width: "500px" }}
         />
       </LogoContainer>
       <img
-        src={`${character.thumbnail.path}.${character.thumbnail.extension}`}
-        alt={character.name}
+        src={character.image || "/placeholder.png"}
+        alt={character.Character}
       />
-      <h1>{character.name}</h1>
-      <Par>{character.description || "Sem descrição disponível."}</Par>
-
-      <Botao className="back-button" onClick={() => navigate("/")}>
-        ← Voltar
-      </Botao>
+      <h1>{character.Character}</h1>
+      <Par>
+        <p><strong>Nome real:</strong> {character["Real Name"]}</p>
+        <p><strong>Afiliação:</strong> {character.Affiliation}</p>
+        <p><strong>Poderes:</strong> {character.Powers}</p>
+        <p><strong>Função:</strong> {character.Role}</p>
+        <p><strong>Nível de poder:</strong> {character["Power Level"]}</p>
+      </Par>
+      <Botao onClick={() => navigate("/")}>← Voltar</Botao>
     </Container>
   );
 };
@@ -65,14 +71,6 @@ const LogoImage = styled.img`
 const Par = styled.div`
   width: 500px;
 
-  @media (max-width: 1200px) {
-    width: 500px;
-  }
-
-  @media (max-width: 768px) {
-    width: 500px;
-  }
-
   @media (max-width: 480px) {
     width: 300px;
   }
@@ -82,38 +80,17 @@ const Container = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
   text-align: center;
   padding: 20px;
   margin-top: 200px;
 
   img {
-    width: 200px;
-    height: 200px;
+    width: 300px;
+    height: 300px;
     object-fit: contain;
     border-radius: 10px;
     display: block;
-  }
-
-  h1,
-  p {
-    text-align: center;
-    max-width: 80%;
-  }
-
-  @media (max-width: 1200px) {
-    width: 500px;
-    margin-left: 150px;
-  }
-
-  @media (max-width: 768px) {
-    width: 500px;
-    margin-left: 5px;
-  }
-
-  @media (max-width: 480px) {
-    width: 300px;
-    margin-left: 30px;
+    margin-bottom: 20px;
   }
 `;
 
@@ -125,7 +102,7 @@ const Botao = styled.div`
   font-size: 16px;
   border-radius: 8px;
   cursor: pointer;
-  transition: all 0.3s ease-in-out;
+  transition: all 0.3s;
   margin-top: 10px;
   margin-bottom: 10px;
 

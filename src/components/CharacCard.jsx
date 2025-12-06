@@ -3,11 +3,15 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 const CharacCard = ({ name, thumbnail, id }) => {
+
+  // se thumbnail existir, usa direto; senão usa uma imagem padrão
+  const imageUrl = thumbnail ? thumbnail : "/images/placeholder-small.png";
+  
   return (
     <CardContainer>
-      <img src={`${thumbnail.path}.${thumbnail.extension}`} alt={name} />
+      <img src={imageUrl} alt={name} />
       <h3>{name}</h3>
-      <Link to={`/character/${id}`} className="details-link">
+      <Link to={`/characters/${id}`} className="details-link">
         Ver detalhes
       </Link>
     </CardContainer>
@@ -28,11 +32,11 @@ const CardContainer = styled.div`
   transition: transform 0.2s ease;
 
   img {
-    width: 100%;
-    height: auto;
-    max-width: 150px;
-    border-radius: 50%;
-    margin-bottom: 8px;
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 50%;
+  margin-bottom: 8px;
   }
 
   h3 {
@@ -57,4 +61,3 @@ const CardContainer = styled.div`
     transform: scale(1.05);
   }
 `;
-

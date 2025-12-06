@@ -18,8 +18,9 @@ function App() {
       ) : (
         <BrowserRouter>
           <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/character/:id" element={<Details />} />
+            {/* rota padrão para "/" */}
+            <Route index element={<Home />} />
+            <Route path="/characters/:id" element={<Details />} />
           </Routes>
         </BrowserRouter>
       )}

@@ -14,31 +14,44 @@ const Home = () => {
 
   const fetchCharacters = async (newOffset, reset = false) => {
     try {
-      const response = await axios.get("/api/characters", {
-        params: { offset: newOffset },
+      const response = await axios.get("http://localhost:3001/characters", {
+        headers: { "Cache-Control": "no-cache" }
       });
 
-      const newCharacters = response.data.data.results;
+
+      const newCharacters = Array.isArray(response.data)
+        ? response.data
+        : Object.values(response.data);
 
       setCharacters((prev) =>
         reset ? newCharacters : [...prev, ...newCharacters]
       );
 
-      setOffset(newOffset + 10); // Atualiza o offset
+      setOffset(newOffset + 10);
     } catch (error) {
-      console.error("Erro ao buscar personagens da Marvel:", error);
+      console.error("Erro ao buscar personagens:", error);
     }
   };
 
   const searchCharactersByName = async (name) => {
     try {
-      const response = await axios.get("/api/characters", {
-        params: { nameStartsWith: name, limit: 10 },
+      const response = await axios.get("http://localhost:3001/characters", {
+        headers: { "Cache-Control": "no-cache" }
       });
 
-      const results = response.data.data.results;
-      setCharacters(results); // Atualiza com os resultados encontrados
-      setOffset(0); // Reseta o offset
+      console.log("Busca por nome, resposta:", response.data); // <-- debug
+
+      const all = Array.isArray(response.data)
+        ? response.data
+        : Object.values(response.data);
+
+      const query = name.trim().toLowerCase();
+      const results = all.filter((c) =>
+        String(c.Character || "").toLowerCase().includes(query)
+      );
+
+      setCharacters(results);
+      setOffset(0);
     } catch (error) {
       console.error("Erro ao buscar personagem por nome:", error);
     }
@@ -63,9 +76,9 @@ const Home = () => {
           setProcuraPersonagem(value);
 
           if (value.trim() === "") {
-            fetchCharacters(0, true); // Reseta para a lista padrão
+            fetchCharacters(0, true);
           } else {
-            searchCharactersByName(value); // Busca pelo nome
+            searchCharactersByName(value);
           }
         }}
         style={{
@@ -76,16 +89,19 @@ const Home = () => {
           width: "300px",
         }}
       />
+
       <CharacterGrid>
         {characters.length > 0 ? (
-          characters.map((character) => (
-            <CharacCard
-              key={character.id}
-              name={character.name}
-              thumbnail={character.thumbnail}
-              id={character.id}
-            />
-          ))
+          <>
+            {characters.map((character, index) => (
+              <CharacCard
+                key={character.id || index}
+                id={character.id}
+                name={character.Character}
+                thumbnail={character.thumbnail}
+              />
+            ))}
+          </>
         ) : (
           <p>Nenhum personagem encontrado.</p>
         )}

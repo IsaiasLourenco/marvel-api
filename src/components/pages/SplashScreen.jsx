@@ -26,13 +26,13 @@ const SplashScreen = ({ onFinish }) => {
           <Character
             src="/card-iron-man.jpg"
             alt="Personagem Rosto"
-            visible={!showFullBody}
-            small
+            $visible={!showFullBody}
+            $small
           />
           <Character
             src="/card-iron-man.png"
             alt="Personagem Corpo Inteiro"
-            visible={showFullBody}
+            $visible={showFullBody}
           />
         </CharacterContainer>
         <div>
@@ -108,9 +108,9 @@ const CharacterContainer = styled.div`
 
 const Character = styled.img`
   position: absolute;
-  width: ${(props) => (props.small ? "80%" : "100%")}; /* Rosto menor */
+  width: ${(props) => (props.$small ? "80%" : "100%")}; /* Rosto menor */
   height: auto;
-  opacity: ${(props) => (props.visible ? 1 : 0)};
+  opacity: ${(props) => (props.$visible ? 1 : 0)};
   transition: opacity 1s ease-in-out; /* Transição suave */
 `;
 
