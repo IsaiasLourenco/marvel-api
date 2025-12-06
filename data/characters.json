@@ -2,58 +2,58 @@
   "characters": [
     {
       "id": 1,
-      "Character": "iron-man",
+      "Character": "Home de Ferro",
       "Real Name": "Tony Stark",
       "Affiliation": "Avengers",
-      "Powers": "Powered Armor, Genius-level intellect",
-      "Role": "Hero",
-      "Power Level": "Low",
+      "Powers": "Armadura Potencializada, Intelecto de Nível Genial",
+      "Role": "Super Herói",
+      "Power Level": "Alto",
       "thumbnail": "/images/iron-man-small.png",
       "image": "/images/iron-man.png"
     },
     {
       "id": 2,
-      "Character": "captain-america",
+      "Character": "Capitão América",
       "Real Name": "Steve Rogers",
       "Affiliation": "Avengers",
-      "Powers": "Super Soldier, Enhanced strength",
-      "Role": "Hero",
-      "Power Level": "Low",
-      "thumbnail": "/images/card-capitao-america.jpg",
-      "image": "/images/card-capitao-america.png"
+      "Powers": "Super Soldado, Força Aprimorada",
+      "Role": "Super Herói | Soldado",
+      "Power Level": "Alto",
+      "thumbnail": "/images/capitao-america-small.jpg",
+      "image": "/images/capitao-america.png"
     },
     {
       "id": 3,
-      "Character": "thor",
+      "Character": "Thor",
       "Real Name": "Thor Odinson",
       "Affiliation": "Avengers",
-      "Powers": "God of Thunder, Weather manipulation",
-      "Role": "Hero",
-      "Power Level": "Low",
-      "thumbnail": "/images/placeholder-small.png",
-      "image": "/images/placeholder.png"
+      "Powers": "Deus do Trovão, Manipulação do tempo",
+      "Role": "Guardião",
+      "Power Level": "Lenda",
+      "thumbnail": "/images/thor-small.jpg",
+      "image": "/images/thor.png"
     },
     {
       "id": 4,
-      "Character": "black-widow",
+      "Character": "Viúva Negra",
       "Real Name": "Natasha Romanoff",
       "Affiliation": "Avengers",
-      "Powers": "Superhuman strength, Espionage",
-      "Role": "Hero",
-      "Power Level": "Low",
-      "thumbnail": "/images/placeholder-small.png",
-      "image": "/images/placeholder.png"
+      "Powers": "Poder Superhumano (HQ) | Treinanada, Espiã (UCM)",
+      "Role": "Super Herói",
+      "Power Level": "Médio",
+      "thumbnail": "/images/viuva-negra-smail.jpg",
+      "image": "/images/viuva-negra.png"
     },
     {
       "id": 5,
-      "Character": "hulk",
+      "Character": "Hulk",
       "Real Name": "Bruce Banner",
       "Affiliation": "Avengers",
-      "Powers": "Superhuman strength, Gamma Radiation",
-      "Role": "Hero",
-      "Power Level": "Low",
-      "thumbnail": "/images/placeholder-small.png",
-      "image": "/images/placeholder.png"
+      "Powers": "Poder Superhumano, Manipula Radiação Gama",
+      "Role": "Super Herói | Guardião",
+      "Power Level": "Lenda",
+      "thumbnail": "/images/hulk-small.jpg",
+      "image": "/images/hulk.png"
     },
     {
       "id": 6,

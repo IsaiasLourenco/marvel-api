@@ -54,6 +54,7 @@ const CharacterDetails = () => {
 
 export default CharacterDetails;
 
+
 // Estilos
 const LogoContainer = styled.div`
   display: flex;
