@@ -11,12 +11,11 @@ const CharacterDetails = () => {
   useEffect(() => {
     const fetchCharacterDetails = async () => {
       try {
-        // Busca todos os personagens porque o JSON tem raiz "characters"
-        const response = await axios.get("http://localhost:3001/characters");
-        const found = response.data.find(
-          (c) => c.id === Number(id)
+        const response = await axios.get(
+          `http://localhost:3001/characters/${id}`
         );
-        setCharacter(found);
+
+        setCharacter(response.data); // ← agora sim, popula o estado
       } catch (error) {
         console.error("Erro ao carregar detalhes do personagem:", error);
       }
