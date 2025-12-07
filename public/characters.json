@@ -38,7 +38,7 @@
       "Character": "Viúva Negra",
       "Real Name": "Natasha Romanoff",
       "Affiliation": "Avengers",
-      "Powers": "Poder Superhumano (HQ) | Treinanada, Espiã (UCM)",
+      "Powers": "Poder Superhumano (HQ) | Soldada Treinada, Espiã (UCM)",
       "Role": "Super Herói",
       "Power Level": "Médio",
       "thumbnail": "/images/viuva-negra-smail.jpg",
@@ -46,6 +46,17 @@
     },
     {
       "id": 5,
+      "Character": "Viúva Negra",
+      "Real Name": "Yelena Belova",
+      "Affiliation": "Avengers | Thunderbolts",
+      "Powers": "Soldada Treinada, Espiã (UCM)",
+      "Role": "Super Herói",
+      "Power Level": "Médio",
+      "thumbnail": "/images/yelena-smail.jpg",
+      "image": "/images/yelena.jpg"
+    },
+    {
+      "id": 6,
       "Character": "Hulk",
       "Real Name": "Bruce Banner",
       "Affiliation": "Avengers",
@@ -56,184 +67,217 @@
       "image": "/images/hulk.png"
     },
     {
-      "id": 6,
-      "Character": "spider-man",
+      "id": 7,
+      "Character": "Homem-Aranha",
       "Real Name": "Peter Parker",
       "Affiliation": "Avengers",
-      "Powers": "Spider sense, Wall crawling",
-      "Role": "Hero",
-      "Power Level": "Low",
-      "thumbnail": "/images/placeholder-small.png",
-      "image": "/images/placeholder.png"
-    },
-    {
-      "id": 7,
-      "Character": "wolverine",
-      "Real Name": "James Howlett",
-      "Affiliation": "X-Men",
-      "Powers": "Regeneration, Adamantium claws",
-      "Role": "Hero",
-      "Power Level": "Low",
-      "thumbnail": "/images/placeholder-small.png",
-      "image": "/images/placeholder.png"
+      "Powers": "Sentido Aranha, Força Superhumana, Agilidade Aprimorada, Reflexos Rápidos, Escalar Paredes, Lançar Teias",
+      "Role": "Super Herói",
+      "Power Level": "Alto",
+      "thumbnail": "/images/spider-man-small.jpg",
+      "image": "/images/spider-man.png"
     },
     {
       "id": 8,
-      "Character": "deadpool",
-      "Real Name": "Wade Wilson",
-      "Affiliation": "X-Force",
-      "Powers": "Regeneration, Skilled hand-to-hand combatant",
-      "Role": "Antihero",
-      "Power Level": "Low",
-      "thumbnail": "/images/placeholder-small.png",
-      "image": "/images/placeholder.png"
+      "Character": "Homem-Aranha",
+      "Real Name": "Miles Morales",
+      "Affiliation": "Spider Verse | Ultimate",
+      "Powers": "Sentido Aranha, Força Superhumana, Agilidade Aprimorada, Reflexos Rápidos, Escalar Paredes, Lançar Teias Elétricas, Invisibilidade",
+      "Role": "Super Herói",
+      "Power Level": "Alto",
+      "thumbnail": "/images/miles-small.jpg",
+      "image": "/images/miles.jpg"
     },
     {
       "id": 9,
-      "Character": "black-panther",
-      "Real Name": "T’Challa",
-      "Affiliation": "Avengers",
-      "Powers": "Superhuman strength, Vibranium suit",
-      "Role": "Hero",
-      "Power Level": "Low",
-      "thumbnail": "/images/placeholder-small.png",
-      "image": "/images/placeholder.png"
+      "Character": "Homem-Aranha 2099",
+      "Real Name": "Miguel O'Hara",
+      "Affiliation": "Spider-Verse",
+      "Powers": "Força Aprimorada, Garras Retráteis, Visão Aprimorada, Escalar Paredes, Sentido Aranha",
+      "Role": "Guardião Temporal",
+      "Power Level": "Alto",
+      "thumbnail": "/images/spider2099-small.jfif",
+      "image": "/images/spider2099.jfif"
     },
     {
       "id": 10,
-      "Character": "doctor-strange",
-      "Real Name": "Stephen Strange",
-      "Affiliation": "Avengers",
-      "Powers": "Sorcery, Magic",
-      "Role": "Hero",
-      "Power Level": "Low",
-      "thumbnail": "/images/placeholder-small.png",
-      "image": "/images/placeholder.png"
+      "Character": "Homem-Aranha Noir",
+      "Real Name": "Peter Parker (Terra-90214)",
+      "Affiliation": "Spider-Verse",
+      "Powers": "Sentido Aranha, Força Aprimorada, Agilidade, Combate Corpo a Corpo, Uso de Armas de Fogo",
+      "Role": "Detetive | Vigilante",
+      "Power Level": "Médio",
+      "thumbnail": "/images/noir-small.jfif",
+      "image": "/images/noir.jfif"
     },
     {
       "id": 11,
-      "Character": "ant-man",
-      "Real Name": "Scott Lang",
-      "Affiliation": "Avengers",
-      "Powers": "Size manipulation, Ant communication",
-      "Role": "Hero",
-      "Power Level": "Low",
-      "thumbnail": "/images/placeholder-small.png",
-      "image": "/images/placeholder.png"
+      "Character": "Spider-Gwen",
+      "Real Name": "Gwen Stacy",
+      "Affiliation": "Spider-Verse",
+      "Powers": "Sentido Aranha, Força Superhumana, Agilidade Aprimorada, Reflexos Rápidos, Escalar Paredes, Lançar Teias",
+      "Role": "Super Herói | Músico",
+      "Power Level": "Médio",
+      "thumbnail": "/images/gwen-small.jfif",
+      "image": "/images/gwen.jfif"
     },
     {
       "id": 12,
-      "Character": "scarlet-witch",
-      "Real Name": "Wanda Maximoff",
-      "Affiliation": "Avengers",
-      "Powers": "Telekinesis, Reality warping",
-      "Role": "Hero",
-      "Power Level": "Low",
-      "thumbnail": "/images/placeholder-small.png",
-      "image": "/images/placeholder.png"
+      "Character": "Wolverine",
+      "Real Name": "James Howlett",
+      "Affiliation": "X-Men",
+      "Powers": "Regeneração, Garras de Adamantium",
+      "Role": "Super Herói",
+      "Power Level": "Alto",
+      "thumbnail": "/images/wolverine-small.jpg",
+      "image": "/images/wolverine.png"
     },
     {
       "id": 13,
-      "Character": "vision",
-      "Real Name": "Victor Von Doom",
-      "Affiliation": "Avengers",
-      "Powers": "Genius intellect, Magic",
-      "Role": "Hero",
-      "Power Level": "Low",
-      "thumbnail": "/images/placeholder-small.png",
-      "image": "/images/placeholder.png"
+      "Character": "Deadpool",
+      "Real Name": "Wade Wilson",
+      "Affiliation": "X-Force",
+      "Powers": "Regeneração, Habilidoso combatente mano a mano",
+      "Role": "Antiherói",
+      "Power Level": "Alto",
+      "thumbnail": "/images/dead-pool-small.jpg",
+      "image": "/images/dead-pool.png"
     },
     {
       "id": 14,
-      "Character": "daredevil",
-      "Real Name": "Matt Murdock",
-      "Affiliation": "Defenders",
-      "Powers": "Enhanced senses, Superhuman strength",
-      "Role": "Hero",
-      "Power Level": "Low",
-      "thumbnail": "/images/placeholder-small.png",
-      "image": "/images/placeholder.png"
+      "Character": "Pantera Negra",
+      "Real Name": "T’Challa",
+      "Affiliation": "Avengers",
+      "Powers": "Força Sobrehumana, Traje de Vibrânio",
+      "Role": "Super Herói",
+      "Power Level": "Alto",
+      "thumbnail": "/images/pantera-negra-small.jpg",
+      "image": "/images/pantera-negra.png"
     },
     {
       "id": 15,
-      "Character": "luke-cage",
-      "Real Name": "Carl Lucas",
-      "Affiliation": "Defenders",
-      "Powers": "Superhuman strength, Bulletproof skin",
-      "Role": "Hero",
-      "Power Level": "Low",
-      "thumbnail": "/images/placeholder-small.png",
-      "image": "/images/placeholder.png"
+      "Character": "Doutor Estranho",
+      "Real Name": "Stephen Strange",
+      "Affiliation": "Avengers",
+      "Powers": "Feitiçaria, Magia",
+      "Role": "Super Herói",
+      "Power Level": "Alto",
+      "thumbnail": "/images/doctor-strange-small.jpg",
+      "image": "/images/doctor-strange.png"
     },
     {
       "id": 16,
-      "Character": "gamora",
-      "Real Name": "Gamora Zenwhoberi",
-      "Affiliation": "Guardians of the Galaxy",
-      "Powers": "Superhuman strength, Expert fighter",
-      "Role": "Hero",
-      "Power Level": "Low",
-      "thumbnail": "/images/placeholder-small.png",
-      "image": "/images/placeholder.png"
+      "Character": "Homem Formiga",
+      "Real Name": "Scott Lang",
+      "Affiliation": "Avengers",
+      "Powers": "Manipulação de Tamanho, Comunicação com Formigas",
+      "Role": "Super Herói",
+      "Power Level": "Médio",
+      "thumbnail": "/images/homem-formiga-small.jfif",
+      "image": "/images/homem-formiga.jfif"
     },
     {
       "id": 17,
-      "Character": "star-lord",
-      "Real Name": "Peter Quill",
-      "Affiliation": "Guardians of the Galaxy",
-      "Powers": "Weapons expert, Green energy manipulation",
-      "Role": "Hero",
-      "Power Level": "Low",
-      "thumbnail": "/images/placeholder-small.png",
-      "image": "/images/placeholder.png"
+      "Character": "Homem Formiga",
+      "Real Name": "Hank Pym",
+      "Affiliation": "Avengers",
+      "Powers": "Manipulação de Tamanho, Comunicação com Formigas",
+      "Role": "Super Herói",
+      "Power Level": "Médio",
+      "thumbnail": "/images/ant-man-small.jpg",
+      "image": "/images/ant-man.png"
     },
     {
       "id": 18,
-      "Character": "rocket-raccoon",
-      "Real Name": "Rocket",
-      "Affiliation": "Guardians of the Galaxy",
-      "Powers": "Cybernetic enhancements",
-      "Role": "Hero",
-      "Power Level": "Low",
-      "thumbnail": "/images/placeholder-small.png",
-      "image": "/images/placeholder.png"
+      "Character": "Visão",
+      "Real Name": "Jarvis(UCM) | Victor Shade(HQ)",
+      "Affiliation": "Avengers",
+      "Powers": "Intelectualidade Genial, Magia",
+      "Role": "Super Herói",
+      "Power Level": "Alto",
+      "thumbnail": "/images/visao-small.png",
+      "image": "/images/visao.png"
     },
     {
       "id": 19,
-      "Character": "black-widow",
-      "Real Name": "Natasha Romanoff",
-      "Affiliation": "Avengers",
-      "Powers": "Rocket science, Genius intellect",
-      "Role": "Hero",
-      "Power Level": "Low",
-      "thumbnail": "/images/placeholder-small.png",
-      "image": "/images/placeholder.png"
+      "Character": "Demolidor",
+      "Real Name": "Matt Murdock",
+      "Affiliation": "Defensores",
+      "Powers": "Sensibilidade Aumentada, Força sobrehumana",
+      "Role": "Super Herói",
+      "Power Level": "Médio",
+      "thumbnail": "/images/demolidor-smaill.jfif",
+      "image": "/images/demolidor.jfif"
     },
     {
       "id": 20,
-      "Character": "thanos",
-      "Real Name": "Thanos",
-      "Affiliation": "Villain",
-      "Powers": "Expert marksmanship, Advanced technology",
-      "Role": "Villain",
-      "Power Level": "Low",
-      "thumbnail": "/images/placeholder-small.png",
-      "image": "/images/placeholder.png"
+      "Character": "Luke Cage",
+      "Real Name": "Carl Lucas",
+      "Affiliation": "Defensores",
+      "Powers": "Força sobre-humana, Pele à prova de balas",
+      "Role": "Super Herói",
+      "Power Level": "Médio",
+      "thumbnail": "/images/lukecage-small.jfif",
+      "image": "/images/lukecage.jfif"
     },
     {
       "id": 21,
-      "Character": "doctor-doom",
-      "Real Name": "Victor Von Doom",
-      "Affiliation": "Villain",
-      "Powers": "Superhuman strength, Regeneration",
-      "Role": "Villain",
-      "Power Level": "Low",
-      "thumbnail": "/images/placeholder-small.png",
-      "image": "/images/placeholder.png"
+      "Character": "Gamora",
+      "Real Name": "Gamora Zenwhoberi",
+      "Affiliation": "Guardiões da Galáxia",
+      "Powers": "Força sobre-humana, Experiêncoa em Combate",
+      "Role": "Super Herói",
+      "Power Level": "Alto",
+      "thumbnail": "/images/gamora-small.jfif",
+      "image": "/images/gamora.jfif"
     },
     {
       "id": 22,
-      "Character": "green-goblin",
+      "Character": "Senhor das Estrelas",
+      "Real Name": "Peter Quill",
+      "Affiliation": "Guardiões da Galáxia",
+      "Powers": "Especialista em armas, manipulação de energia verde",
+      "Role": "Super Herói",
+      "Power Level": "Alto",
+      "thumbnail": "/images/star-lord-small.jfif",
+      "image": "/images/star-lord.jfif"
+    },
+    {
+      "id": 23,
+      "Character": "Rocket",
+      "Real Name": "Rocket",
+      "Affiliation": "Guardiões da Galáxia",
+      "Powers": "Aprimoramentos cibernéticos",
+      "Role": "Super Herói",
+      "Power Level": "Alto",
+      "thumbnail": "/images/rocket-small.jfif",
+      "image": "/images/rocket.jfif"
+    },
+    {
+      "id": 24,
+      "Character": "Thanos",
+      "Real Name": "Thanos",
+      "Affiliation": "Ordem Negra",
+      "Powers": "Precisão de atirador, tecnologia avançada, Força",
+      "Role": "Super Vilão",
+      "Power Level": "Alto",
+      "thumbnail": "/images/thanos-small.jfif",
+      "image": "/images/thanos.jfif"
+    },
+    {
+      "id": 25,
+      "Character": "Doutor Destinho",
+      "Real Name": "Victor Von Doom",
+      "Affiliation": "Mestres do Terror | Parlamento de Destino | Cisnes Negros | Cabala | Cavaleiros da Távola Redonda Atômica",
+      "Powers": "Força sobre-humana, Experiêncoa em Combate, Regeneração",
+      "Role": "Super Vilão",
+      "Power Level": "Alto",
+      "thumbnail": "/images/doom-small.jfif",
+      "image": "/images/doom.jfif"
+    },
+    {
+      "id": 26,
+      "Character": "Duende Verde",
       "Real Name": "Norman Osborn",
       "Affiliation": "Villain",
       "Powers": "Magical powers",
@@ -243,8 +287,8 @@
       "image": "/images/placeholder.png"
     },
     {
-      "id": 23,
-      "Character": "loki",
+      "id": 27,
+      "Character": "Loki",
       "Real Name": "Loki Laufeyson",
       "Affiliation": "Avengers",
       "Powers": "Superhuman speed, Enhanced senses",
@@ -254,8 +298,8 @@
       "image": "/images/placeholder.png"
     },
     {
-      "id": 24,
-      "Character": "hawkeye",
+      "id": 28,
+      "Character": "Gavião Arqueiro",
       "Real Name": "Clint Barton",
       "Affiliation": "Avengers",
       "Powers": "Aerial combat, Shield mastery",
@@ -265,8 +309,8 @@
       "image": "/images/placeholder.png"
     },
     {
-      "id": 25,
-      "Character": "bucky-barnes",
+      "id": 29,
+      "Character": "Soldado Invernal",
       "Real Name": "James Buchanan Barnes",
       "Affiliation": "Avengers",
       "Powers": "Superhuman strength, Regeneration",
@@ -276,8 +320,8 @@
       "image": "/images/placeholder.png"
     },
     {
-      "id": 26,
-      "Character": "falcon",
+      "id": 30,
+      "Character": "Falcão",
       "Real Name": "Sam Wilson",
       "Affiliation": "Avengers",
       "Powers": "Chi manipulation, Martial arts expert",
@@ -287,8 +331,8 @@
       "image": "/images/placeholder.png"
     },
     {
-      "id": 27,
-      "Character": "shang-chi",
+      "id": 31,
+      "Character": "Shang Chi",
       "Real Name": "Shang-Chi",
       "Affiliation": "Avengers",
       "Powers": "Skilled combatant, Weapon mastery",
@@ -298,8 +342,8 @@
       "image": "/images/placeholder.png"
     },
     {
-      "id": 28,
-      "Character": "moon-knight",
+      "id": 32,
+      "Character": "Cavaleiro da Lua",
       "Real Name": "Marc Spector",
       "Affiliation": "Avengers",
       "Powers": "Energy manipulation, Expert marksman",
@@ -309,8 +353,8 @@
       "image": "/images/placeholder.png"
     },
     {
-      "id": 29,
-      "Character": "elektra",
+      "id": 33,
+      "Character": "Elektra",
       "Real Name": "Elektra Natchios",
       "Affiliation": "Defenders",
       "Powers": "Skilled combatant, Enhanced reflexes",
@@ -320,8 +364,8 @@
       "image": "/images/placeholder.png"
     },
     {
-      "id": 30,
-      "Character": "mantis",
+      "id": 34,
+      "Character": "Mantis",
       "Real Name": "Mantis",
       "Affiliation": "Avengers",
       "Powers": "Superhuman strength, Agility",
@@ -331,8 +375,8 @@
       "image": "/images/placeholder.png"
     },
     {
-      "id": 31,
-      "Character": "valkyrie",
+      "id": 35,
+      "Character": "Valkyrie",
       "Real Name": "Brunnhilde",
       "Affiliation": "Defenders",
       "Powers": "Superhuman intelligence, Tentacle control",
@@ -342,10 +386,10 @@
       "image": "/images/placeholder.png"
     },
     {
-      "id": 32,
-      "Character": "black-bolt",
+      "id": 36,
+      "Character": "Raio Negro",
       "Real Name": "Blackagar Boltagon",
-      "Affiliation": "Avengers",
+      "Affiliation": "Inumanos",
       "Powers": "Illusion creation, Hypnosis",
       "Role": "Hero",
       "Power Level": "Low",
@@ -353,8 +397,8 @@
       "image": "/images/placeholder.png"
     },
     {
-      "id": 33,
-      "Character": "silver-surfer",
+      "id": 37,
+      "Character": "Surfista Prateado",
       "Real Name": "Norrin Radd",
       "Affiliation": "Inhumans",
       "Powers": "Superhuman strength, Durability",
@@ -364,8 +408,8 @@
       "image": "/images/placeholder.png"
     },
     {
-      "id": 34,
-      "Character": "red-skull",
+      "id": 38,
+      "Character": "Caveira Vermelha",
       "Real Name": "Johann Schmidt",
       "Affiliation": "Fantastic Four",
       "Powers": "Symbiote bonding, Enhanced strength",
@@ -375,8 +419,8 @@
       "image": "/images/placeholder.png"
     },
     {
-      "id": 35,
-      "Character": "ultron",
+      "id": 39,
+      "Character": "Ultron",
       "Real Name": "Henry Pym",
       "Affiliation": "Hydra",
       "Powers": "Flight, Superhuman strength, Cosmic energy",
@@ -386,8 +430,8 @@
       "image": "/images/placeholder.png"
     },
     {
-      "id": 36,
-      "Character": "hela",
+      "id": 40,
+      "Character": "Hela",
       "Real Name": "Sue Storm",
       "Affiliation": "Avengers",
       "Powers": "Magical powers",
@@ -397,8 +441,8 @@
       "image": "/images/placeholder.png"
     },
     {
-      "id": 37,
-      "Character": "mister-fantastic",
+      "id": 41,
+      "Character": "Senhor Fantástico",
       "Real Name": "Johnny Storm",
       "Affiliation": "Fantastic Four",
       "Powers": "Elasticity, Superhuman strength",
@@ -408,8 +452,8 @@
       "image": "/images/placeholder.png"
     },
     {
-      "id": 38,
-      "Character": "invisible-woman",
+      "id": 42,
+      "Character": "Mulher Invisível",
       "Real Name": "Ben Grimm",
       "Affiliation": "Fantastic Four",
       "Powers": "Invisibility, Force field generation",
@@ -419,8 +463,8 @@
       "image": "/images/placeholder.png"
     },
     {
-      "id": 39,
-      "Character": "human-torch",
+      "id": 43,
+      "Character": "Tocha Humana",
       "Real Name": "Otto Octavius",
       "Affiliation": "Fantastic Four",
       "Powers": "Pyrokinesis, Flight",
@@ -430,8 +474,8 @@
       "image": "/images/placeholder.png"
     },
     {
-      "id": 40,
-      "Character": "thing",
+      "id": 44,
+      "Character": "Coisa",
       "Real Name": "Quentin Beck",
       "Affiliation": "Sinister Six",
       "Powers": "Superhuman strength, Durability",
@@ -441,8 +485,8 @@
       "image": "/images/placeholder.png"
     },
     {
-      "id": 41,
-      "Character": "doctor-octopus",
+      "id": 45,
+      "Character": "Doutor Octopus",
       "Real Name": "Mac Gargan",
       "Affiliation": "Sinister Six",
       "Powers": "Superhuman strength, Tentacle control",
@@ -452,8 +496,8 @@
       "image": "/images/placeholder.png"
     },
     {
-      "id": 42,
-      "Character": "mysterio",
+      "id": 46,
+      "Character": "Mistério",
       "Real Name": "Eddie Brock",
       "Affiliation": "Sinister Six",
       "Powers": "Illusion creation, Hypnosis",
@@ -463,8 +507,8 @@
       "image": "/images/placeholder.png"
     },
     {
-      "id": 43,
-      "Character": "rhino",
+      "id": 47,
+      "Character": "Rhino",
       "Real Name": "Carol Danvers",
       "Affiliation": "Sinister Six",
       "Powers": "Superhuman strength, Durability",
@@ -474,8 +518,8 @@
       "image": "/images/placeholder.png"
     },
     {
-      "id": 44,
-      "Character": "venom",
+      "id": 48,
+      "Character": "Venom",
       "Real Name": "Eddie Brock",
       "Affiliation": "Avengers",
       "Powers": "Symbiote bonding, Enhanced strength",
@@ -485,8 +529,8 @@
       "image": "/images/placeholder.png"
     },
     {
-      "id": 45,
-      "Character": "captain-marvel",
+      "id": 49,
+      "Character": "Capitã Marvel",
       "Real Name": "Carol Danvers",
       "Affiliation": "Avengers",
       "Powers": "Flight, Superhuman strength, Cosmic energy",
