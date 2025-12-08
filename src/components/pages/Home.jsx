@@ -5,62 +5,65 @@ import styled from "styled-components";
 import ThemeToggler from "../ThemeToggler";
 
 const Home = () => {
+  const [procuraPersonagem, setProcuraPersonagem] = useState(() => {
+    return localStorage.getItem("search") || "";
+  });
+  const [isSearching, setIsSearching] = useState(() => {
+    return localStorage.getItem("isSearching") === "true";
+  });
   const [characters, setCharacters] = useState([]);
-  const [offset, setOffset] = useState(10); // 🔹 começa mostrando 10
-  const [procuraPersonagem, setProcuraPersonagem] = useState("");
+  const [offset, setOffset] = useState(() => {
+    const saved = localStorage.getItem("offset");
+    return saved ? parseInt(saved, 10) : 10;
+  });
+
+  // 🔹 Função para normalizar texto (remove acentos e deixa minúsculo)
+  const normalize = (str) =>
+    String(str || "")
+      .toLowerCase()
+      .normalize("NFD")
+      .replace(/\p{Diacritic}/gu, "");
 
   useEffect(() => {
-    fetchCharacters(true); // 🔹 busca inicial
-  }, []);
+    // salvar sempre que mudar
+    localStorage.setItem("offset", offset);
+    localStorage.setItem("search", procuraPersonagem);
+    localStorage.setItem("isSearching", isSearching);
 
-  const fetchCharacters = async (reset = false) => {
-    try {
-      const response = await axios.get("/characters.json", {
-        headers: { "Cache-Control": "no-cache" }
-      });
+    const fetchData = async () => {
+      try {
+        const response = await axios.get("/characters.json", {
+          headers: { "Cache-Control": "no-cache" }
+        });
 
-      const data = response.data;
-      const newCharacters = Array.isArray(data)
-        ? data
-        : Array.isArray(data.characters)
-        ? data.characters
-        : Object.values(data);
+        const data = response.data;
+        const all = Array.isArray(data)
+          ? data
+          : Array.isArray(data.characters)
+          ? data.characters
+          : Object.values(data);
 
-      setCharacters((prev) =>
-        reset ? newCharacters : [...prev, ...newCharacters]
-      );
-    } catch (error) {
-      console.error("Erro ao buscar personagens:", error);
-    }
-  };
+        if (isSearching && procuraPersonagem.trim() !== "") {
+          const q = normalize(procuraPersonagem);
+          const results = all.filter((c) => {
+            const name = normalize(c.Character);
+            const powers = normalize(c.Powers);
+            return name.includes(q) || powers.includes(q);
+          });
+          setCharacters(results);
+        } else {
+          setCharacters(all);
+        }
+      } catch (error) {
+        console.error("Erro ao buscar personagens:", error);
+      }
+    };
 
-  const searchCharactersByName = async (name) => {
-    try {
-      const response = await axios.get("/characters.json", {
-        headers: { "Cache-Control": "no-cache" }
-      });
-
-      const data = response.data;
-      const all = Array.isArray(data)
-        ? data
-        : Array.isArray(data.characters)
-        ? data.characters
-        : Object.values(data);
-
-      const query = name.trim().toLowerCase();
-      const results = all.filter((c) =>
-        String(c.Character || "").toLowerCase().includes(query)
-      );
-
-      setCharacters(results);
-      setOffset(10); // 🔹 sempre volta a mostrar 10 quando faz busca
-    } catch (error) {
-      console.error("Erro ao buscar personagem por nome:", error);
-    }
-  };
+    fetchData();
+  }, [offset, procuraPersonagem, isSearching]);
 
   const resetToTen = () => {
-    setOffset(10); // 🔹 volta a mostrar só 10
+    setOffset(10); // volta a mostrar só 10
   };
 
   return (
@@ -73,17 +76,17 @@ const Home = () => {
         <ThemeToggler />
         <SearchInput
           type="text"
-          placeholder="Buscar personagem..."
+          placeholder="Buscar por nome ou poder..."
           value={procuraPersonagem}
           onChange={(e) => {
             const value = e.target.value;
             setProcuraPersonagem(value);
 
             if (value.trim() === "") {
-              fetchCharacters(true);
-              setOffset(10); // 🔹 reset quando apaga busca
+              setIsSearching(false);
+              setOffset(10);
             } else {
-              searchCharactersByName(value);
+              setIsSearching(true);
             }
           }}
         />
@@ -91,29 +94,40 @@ const Home = () => {
       <CharacterGrid>
         {characters.length > 0 ? (
           <>
-            {characters.slice(0, offset).map((character, index) => (
-              <CharacCard
-                key={character.id || index}
-                id={character.id}
-                name={character.Character}
-                thumbnail={character.thumbnail}
-              />
-            ))}
+            {isSearching
+              ? characters.map((character, index) => (
+                  <CharacCard
+                    key={character.id || index}
+                    id={character.id}
+                    name={character.Character}
+                    thumbnail={character.thumbnail}
+                  />
+                ))
+              : characters.slice(0, offset).map((character, index) => (
+                  <CharacCard
+                    key={character.id || index}
+                    id={character.id}
+                    name={character.Character}
+                    thumbnail={character.thumbnail}
+                  />
+                ))}
           </>
         ) : (
           <p>Nenhum personagem encontrado.</p>
         )}
       </CharacterGrid>
 
-      {/* 🔹 Botão Carregar Mais */}
-      {offset < characters.length && (
+      {/* Botão Carregar Mais */}
+      {!isSearching && offset < characters.length && (
         <Botao onClick={() => setOffset((prev) => prev + 10)}>
           Carregar Mais
         </Botao>
       )}
 
-      {/* 🔹 Botão Voltar a dez */}
-      {offset > 10 && <Botao onClick={resetToTen}>Voltar a dez</Botao>}
+      {/* Botão Voltar a dez */}
+      {!isSearching && offset > 10 && (
+        <Botao onClick={resetToTen}>Voltar a dez</Botao>
+      )}
     </Container>
   );
 };
