@@ -10,7 +10,7 @@ const CharacCard = ({ name, thumbnail, id }) => {
   return (
     <CardContainer>
       <img src={imageUrl} alt={name} />
-      <h3>{name}</h3>
+      <h3 style={{ whiteSpace: "pre-line" }}>{name}</h3>
       <Link to={`/characters/${id}`} className="details-link">
         Ver detalhes
       </Link>
