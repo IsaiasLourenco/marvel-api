@@ -39,7 +39,7 @@ useEffect(() => {
     <Container>
       <LogoContainer>
         <LogoImage
-          src="/download.jpeg"
+          src="/download.png"
           alt="Logo Marvel"
           style={{ width: "500px" }}
         />

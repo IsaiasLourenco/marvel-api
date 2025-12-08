@@ -1,8 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import styled, { keyframes } from "styled-components";
+import { ThemeContext } from "../context/ThemeContext";
 
 const SplashScreen = ({ onFinish }) => {
   const [showFullBody, setShowFullBody] = useState(false);
+  const { theme } = useContext(ThemeContext);
 
   useEffect(() => {
     const timer1 = setTimeout(() => {
@@ -24,7 +26,7 @@ const SplashScreen = ({ onFinish }) => {
       <Content>
         <CharacterContainer>
           <Character
-            src="/card-iron-man.jpg"
+            src="/card-iron-man-small.png"
             alt="Personagem Rosto"
             $visible={!showFullBody}
             $small
@@ -36,7 +38,7 @@ const SplashScreen = ({ onFinish }) => {
           />
         </CharacterContainer>
         <div>
-          <Logo src="/download.jpeg" alt="Logo Marvel" />
+          <Logo src="/download.png" alt="Logo Marvel" />
           <Text>Bem-vindo ao Universo Marvel!</Text>
         </div>
       </Content>
@@ -87,8 +89,8 @@ const SplashContainer = styled.div`
   justify-content: center;
   align-items: center;
   height: 100vh;
-  background-color: #000;
-  color: #fff;
+  background-color: ${({ theme }) => (theme === "dark" ? "#000" : "#fff")};
+  color: ${({ theme }) => (theme === "dark" ? "#fff" : "#000")};
   text-align: center;
 `;
 
@@ -115,7 +117,7 @@ const Character = styled.img`
 `;
 
 const Logo = styled.img`
-  width: 150px;
+  width: 500px;
   animation: ${pulse} 1.5s infinite; /* Efeito de pulsação */
 `;
 

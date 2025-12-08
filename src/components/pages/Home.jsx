@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import CharacCard from "../CharacCard";
 import styled from "styled-components";
+import ThemeToggler from "../ThemeToggler";
 
 const Home = () => {
   const [characters, setCharacters] = useState([]);
@@ -22,8 +23,8 @@ const Home = () => {
       const newCharacters = Array.isArray(data)
         ? data
         : Array.isArray(data.characters)
-        ? data.characters 
-        : Object.values(data);
+          ? data.characters
+          : Object.values(data);
 
       setCharacters((prev) =>
         reset ? newCharacters : [...prev, ...newCharacters]
@@ -45,15 +46,15 @@ const Home = () => {
       const all = Array.isArray(data)
         ? data
         : Array.isArray(data.characters)
-        ? data.characters
-        : Object.values(data);
+          ? data.characters
+          : Object.values(data);
 
-        const filtered = all.filter (c =>
-          String(c.Character || "").toLowerCase().includes(name.toLowerCase())
-        );
+      const filtered = all.filter(c =>
+        String(c.Character || "").toLowerCase().includes(name.toLowerCase())
+      );
 
-        setCharacters(filtered);
-        setOffset(0);
+      setCharacters(filtered);
+      setOffset(0);
 
       const query = name.trim().toLowerCase();
       const results = all.filter((c) =>
@@ -73,33 +74,28 @@ const Home = () => {
 
   return (
     <Container>
-      <LogoContainer>
-        <LogoImage src="/download.jpeg" alt="Logo Marvel" />
-      </LogoContainer>
-      <h1>Lista de Personagens</h1>
-      <input
-        type="text"
-        placeholder="Buscar personagem..."
-        value={procuraPersonagem}
-        onChange={(e) => {
-          const value = e.target.value;
-          setProcuraPersonagem(value);
+      <Header>
+        <Logo src="/download.png" alt="Marvel logo" />
+        <h1>Lista de Personagens</h1>
+      </Header>
+      <Controls>
+        <ThemeToggler />
+        <SearchInput
+          type="text"
+          placeholder="Buscar personagem..."
+          value={procuraPersonagem}
+          onChange={(e) => {
+            const value = e.target.value;
+            setProcuraPersonagem(value);
 
-          if (value.trim() === "") {
-            fetchCharacters(0, true);
-          } else {
-            searchCharactersByName(value);
-          }
-        }}
-        style={{
-          padding: "10px",
-          marginBottom: "20px",
-          borderRadius: "8px",
-          border: "1px solid #ccc",
-          width: "300px",
-        }}
-      />
-
+            if (value.trim() === "") {
+              fetchCharacters(0, true);
+            } else {
+              searchCharactersByName(value);
+            }
+          }}
+        />
+      </Controls>
       <CharacterGrid>
         {characters.length > 0 ? (
           <>
@@ -125,17 +121,26 @@ const Home = () => {
 export default Home;
 
 // Estilos
-const LogoContainer = styled.div`
+const Header = styled.div`
+  position: relative;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
   align-items: center;
-  margin-bottom: -150px;
+  gap: 12px;
+  margin-bottom: 2px;
+  padding: 160px 0 20px;
 `;
 
-const LogoImage = styled.img`
-  width: 200px;
+const Logo = styled.img`
+  position: absolute;
+  top: -30px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 400px;
   height: auto;
-  margin-top: -150px;
+  z-index: 0;
+  filter: ${({ theme }) =>
+    theme.background === "#333" ? "brightness(1.2)" : "none"};
 `;
 
 const Container = styled.div`
@@ -146,9 +151,9 @@ const Container = styled.div`
 `;
 
 const Botao = styled.div`
-  background-color: #333;
-  color: #fff;
-  border: 2px solid #fff;
+  background-color: ${({ theme }) => theme.buttonBackground};
+  color: ${({ theme }) => theme.buttonText};
+  border: 2px solid ${({ theme }) => theme.buttonText};
   padding: 10px 20px;
   font-size: 16px;
   border-radius: 8px;
@@ -158,14 +163,12 @@ const Botao = styled.div`
   margin-bottom: 10px;
 
   &:hover {
-    background-color: #555;
-    color: #000;
-    border-color: #ccc;
+    background-color: ${({ theme }) => theme.buttonHover};
     transform: scale(1.05);
   }
 
   &:active {
-    background-color: #222;
+    opacity: 0.9;
     transform: scale(0.95);
   }
 `;
@@ -190,4 +193,31 @@ const CharacterGrid = styled.div`
     grid-template-columns: repeat(2, 1fr);
     justify-content: center;
   }
+`;
+
+const SearchInput = styled.input`
+  padding: 10px;
+  margin-bottom: 20px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  width: 300px;
+
+  /* inversão da lógica */
+  background-color: ${({ theme }) =>
+    theme.background === "#333" ? "#fff" : "#333"};
+  color: ${({ theme }) =>
+    theme.background === "#333" ? "#000" : "#fff"};
+
+  &::placeholder {
+    color: ${({ theme }) =>
+    theme.background === "#333" ? "#666" : "#ddd"};
+  }
+`;
+
+const Controls = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px; /* espaço entre switch e input */
+  margin-bottom: 20px;
 `;
