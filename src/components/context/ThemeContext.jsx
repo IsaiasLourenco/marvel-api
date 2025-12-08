@@ -6,10 +6,15 @@ import GlobalStyles from "../styles/GlobalStyles";
 export const ThemeContext = createContext();
 
 export const ThemeContextProvider = ({ children }) => {
-  const [theme, setTheme] = useState("light");
+  const [theme, setTheme] = useState(() => {
+    // tenta carregar do localStorage, senão começa no light
+    return localStorage.getItem("theme") || "light";
+  });
 
   const toggleTheme = () => {
-    setTheme(theme === "light" ? "dark" : "light");
+    const newTheme = theme === "light" ? "dark" : "light";
+    setTheme(newTheme);
+    localStorage.setItem("theme", newTheme); // salva no localStorage
   };
 
   return (

@@ -89,8 +89,8 @@ const SplashContainer = styled.div`
   justify-content: center;
   align-items: center;
   height: 100vh;
-  background-color: ${({ theme }) => (theme === "dark" ? "#000" : "#fff")};
-  color: ${({ theme }) => (theme === "dark" ? "#fff" : "#000")};
+  background-color: ${({ theme }) => theme.background};
+  color: ${({ theme }) => theme.text};
   text-align: center;
 `;
 
@@ -119,6 +119,15 @@ const Character = styled.img`
 const Logo = styled.img`
   width: 500px;
   animation: ${pulse} 1.5s infinite; /* Efeito de pulsação */
+
+  /* versão mobile */
+  @media (max-width: 768px) {
+    width: 250px; /* reduz para tablets e celulares */
+  }
+
+  @media (max-width: 480px) {
+    width: 180px; /* ainda menor para celulares pequenos */
+  }
 `;
 
 const Text = styled.h1`

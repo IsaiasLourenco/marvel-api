@@ -6,14 +6,14 @@ import ThemeToggler from "../ThemeToggler";
 
 const Home = () => {
   const [characters, setCharacters] = useState([]);
-  const [offset, setOffset] = useState(0);
+  const [offset, setOffset] = useState(10); // 🔹 começa mostrando 10
   const [procuraPersonagem, setProcuraPersonagem] = useState("");
 
   useEffect(() => {
-    fetchCharacters(0, true); // Busca inicial de personagens
+    fetchCharacters(true); // 🔹 busca inicial
   }, []);
 
-  const fetchCharacters = async (newOffset, reset = false) => {
+  const fetchCharacters = async (reset = false) => {
     try {
       const response = await axios.get("/characters.json", {
         headers: { "Cache-Control": "no-cache" }
@@ -23,14 +23,12 @@ const Home = () => {
       const newCharacters = Array.isArray(data)
         ? data
         : Array.isArray(data.characters)
-          ? data.characters
-          : Object.values(data);
+        ? data.characters
+        : Object.values(data);
 
       setCharacters((prev) =>
         reset ? newCharacters : [...prev, ...newCharacters]
       );
-
-      setOffset(newOffset + 10);
     } catch (error) {
       console.error("Erro ao buscar personagens:", error);
     }
@@ -46,15 +44,8 @@ const Home = () => {
       const all = Array.isArray(data)
         ? data
         : Array.isArray(data.characters)
-          ? data.characters
-          : Object.values(data);
-
-      const filtered = all.filter(c =>
-        String(c.Character || "").toLowerCase().includes(name.toLowerCase())
-      );
-
-      setCharacters(filtered);
-      setOffset(0);
+        ? data.characters
+        : Object.values(data);
 
       const query = name.trim().toLowerCase();
       const results = all.filter((c) =>
@@ -62,14 +53,14 @@ const Home = () => {
       );
 
       setCharacters(results);
-      setOffset(0);
+      setOffset(10); // 🔹 sempre volta a mostrar 10 quando faz busca
     } catch (error) {
       console.error("Erro ao buscar personagem por nome:", error);
     }
   };
 
   const resetToTen = () => {
-    fetchCharacters(0, true);
+    setOffset(10); // 🔹 volta a mostrar só 10
   };
 
   return (
@@ -89,7 +80,8 @@ const Home = () => {
             setProcuraPersonagem(value);
 
             if (value.trim() === "") {
-              fetchCharacters(0, true);
+              fetchCharacters(true);
+              setOffset(10); // 🔹 reset quando apaga busca
             } else {
               searchCharactersByName(value);
             }
@@ -99,7 +91,7 @@ const Home = () => {
       <CharacterGrid>
         {characters.length > 0 ? (
           <>
-            {characters.map((character, index) => (
+            {characters.slice(0, offset).map((character, index) => (
               <CharacCard
                 key={character.id || index}
                 id={character.id}
@@ -112,7 +104,15 @@ const Home = () => {
           <p>Nenhum personagem encontrado.</p>
         )}
       </CharacterGrid>
-      <Botao onClick={() => fetchCharacters(offset)}>Carregar Mais</Botao>
+
+      {/* 🔹 Botão Carregar Mais */}
+      {offset < characters.length && (
+        <Botao onClick={() => setOffset((prev) => prev + 10)}>
+          Carregar Mais
+        </Botao>
+      )}
+
+      {/* 🔹 Botão Voltar a dez */}
       {offset > 10 && <Botao onClick={resetToTen}>Voltar a dez</Botao>}
     </Container>
   );
@@ -202,7 +202,6 @@ const SearchInput = styled.input`
   border: 1px solid #ccc;
   width: 300px;
 
-  /* inversão da lógica */
   background-color: ${({ theme }) =>
     theme.background === "#333" ? "#fff" : "#333"};
   color: ${({ theme }) =>
@@ -210,7 +209,7 @@ const SearchInput = styled.input`
 
   &::placeholder {
     color: ${({ theme }) =>
-    theme.background === "#333" ? "#666" : "#ddd"};
+      theme.background === "#333" ? "#666" : "#ddd"};
   }
 `;
 
@@ -218,6 +217,6 @@ const Controls = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 16px; /* espaço entre switch e input */
+  gap: 16px;
   margin-bottom: 20px;
 `;

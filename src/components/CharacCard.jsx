@@ -2,13 +2,16 @@ import React from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 
-const CharacCard = ({ name, thumbnail, id }) => {
-
+const CharacCard = ({ id, name, thumbnail }) => {
   // se thumbnail existir, usa direto; senão usa uma imagem padrão
   const imageUrl = thumbnail ? thumbnail : "/images/placeholder-small.png";
 
+  // formata o id com 4 dígitos (ex: 0001)
+  const formattedId = String(id).padStart(4, "0");
+
   return (
     <CardContainer>
+      <IdBadge>{formattedId}</IdBadge>
       <img src={imageUrl} alt={name} />
       <h3 style={{ whiteSpace: "pre-line" }}>{name}</h3>
       <Link to={`/characters/${id}`} className="details-link">
@@ -66,4 +69,16 @@ const CardContainer = styled.div`
   &:hover {
     transform: scale(1.05);
   }
+`;
+
+const IdBadge = styled.div`
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  font-size: 14px;
+  font-weight: bold;
+  color: ${({ theme }) => theme.cardText};
+  background: ${({ theme }) => theme.cardBorder};
+  padding: 2px 6px;
+  border-radius: 4px;
 `;
